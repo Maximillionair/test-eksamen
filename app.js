@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const app = express();
-const {connectDB} = require('./handler/dbHandler');
+const {connectDB} = require('../handler/dbHandler');
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", 'ejs');
