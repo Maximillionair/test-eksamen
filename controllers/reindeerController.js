@@ -1,5 +1,5 @@
 // controllers/reindeerController.js
-const Reindeer = require('../models/reindeer'); // Husk å importere Reindeer-modellen
+const Reindeer = require('../models/reindeerModel'); // Husk å importere Reindeer-modellen
 
 // Funksjon for å søke etter reinsdyr
 const searchReindeer = async (req, res) => {
