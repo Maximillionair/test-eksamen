@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logg inn</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Logg inn</h1>
+    </header>
+
+    <section class="form-container">
+        <form action="/users/login" method="POST">
+            <label for="email">E-post</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="password">Passord</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit">Logg inn</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Kukkik Ano - Samisk Reinsdyrregistrering</p>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

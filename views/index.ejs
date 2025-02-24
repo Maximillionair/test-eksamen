@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-    <title>Reinsdyrregister</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinsdyrregistrering</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Velkommen til Reinsdyrregisteret</h1>
-    <a href="/login">Logg inn</a> | <a href="/register">Registrer deg</a>
-    <h2>Søk etter reinsdyr</h2>
-    <form action="/reindeer/search" method="get">
-        <input type="text" name="query" placeholder="Skriv inn navn">
-        <button type="submit">Søk</button>
-    </form>
+    <header>
+        <h1>Velkommen til Reinsdyrregistreringen</h1>
+    </header>
+
+    <section class="search">
+        <form action="/reindeer/search" method="get">
+            <input type="text" name="query" placeholder="Søk etter reinsdyr..." required>
+            <button type="submit">Søk</button>
+        </form>
+    </section>
+
+    <nav>
+        <ul>
+            <li><a href="/register">Registrer bruker</a></li>
+            <li><a href="/login">Logg inn</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/map">Kart over områder</a></li>
+            <li><a href="/databaseinfo">Databasen</a></li>
+        </ul>
+    </nav>
+
+    <footer>
+        <p>© 2025 Kukkik Ano - Samisk Reinsdyrregistrering</p>
+    </footer>
+
+    <script src="/js/app.js"></script>
 </body>
 </html>
