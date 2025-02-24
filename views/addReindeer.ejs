@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legg til reinsdyr</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Legg til et nytt reinsdyr</h1>
+    </header>
+
+    <section class="form-container">
+        <form action="/reindeer/add" method="POST">
+            <label for="id">Reinsdyr ID</label>
+            <input type="text" name="id" id="id" required>
+
+            <label for="name">Navn</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="age">Alder</label>
+            <input type="number" name="age" id="age" required>
+
+            <label for="owner">Eier</label>
+            <input type="text" name="owner" id="owner" required>
+
+            <label for="location">Lokasjon</label>
+            <input type="text" name="location" id="location" required>
+
+            <button type="submit">Legg til reinsdyr</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Kukkik Ano - Samisk Reinsdyrregistrering</p>
+    </footer>
+
+
+</body>
+</html>
