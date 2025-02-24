@@ -4,7 +4,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const app = express();
-// const {connectDB} = require('./handlers/dbHandler.js');
+const {connectDB} = require("./handlers/dbhandler.js");
 
 const indexRoutes = require("./routes/indexRoutes");
 const userRoutes = require("./routes/userRoutes");
