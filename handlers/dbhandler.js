@@ -7,7 +7,7 @@ async function connectDB() {
         console.log("MongoDB connected successfully!");
     });
 
-      await mongoose.connect('mongodb://10.12.10.240:27017');
+      await mongoose.connect('mongodb://10.12.10.240');
       console.log('Connected to MongoDB');
 
     } catch (error) {
