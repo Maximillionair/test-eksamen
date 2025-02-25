@@ -4,12 +4,12 @@ const jwt = require("jsonwebtoken");
 
 exports.registerOwner = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, uuid, email, password, language, phone } = req.body;
     const existingOwner = await Owner.findOne({ email });
     if (existingOwner) {
       return res.status(400).json({ message: "Email is already taken" });
     }
-    const owner = new Owner({ name, email, password });
+    const owner = new Owner({ name, uuid, email, password, language, phone });
     await owner.save();
     res.redirect("/login");
   } catch (error) {
