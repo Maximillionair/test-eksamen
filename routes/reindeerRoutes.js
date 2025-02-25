@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/search", searchReindeer);
 
 // POST-rute for å legge til reinsdyr (kun for autoriserte brukere)
-router.post("/add", authMiddleware, (req, res, next) => {
+router.post("reindeer/add", authMiddleware, (req, res, next) => {
     if (!req.user) {
       return res.status(403).json({ message: "Unauthorized: You must be logged in to add reindeer" });
     }
