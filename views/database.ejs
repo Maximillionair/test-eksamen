@@ -6,47 +6,37 @@
     <title>Reinsdyr Database</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/app.js" defer></script>
+    <script src="/js/database.js" defer></script>
+</head>
 </head>
 <body>
     <header>
         <h1>Reinsdyr Database</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Hjem</a></li>
+                <li><a href="/search">Søk</a></li>
+                <li><a href="/add">Legg til Reinsdyr</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section>
+    <main>
+        <h2>Liste over registrerte reinsdyr</h2>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Navn</th>
-                    <th>Alder</th>
-                    <th>Eier</th>
-                    <th>Lokasjon</th>
+                    <th>Flokk</th>
+                    <th>Fødselsdato</th>
                 </tr>
             </thead>
-            <tbody>
-                <% if (reindeerList.length > 0) { %>
-                    <% reindeerList.forEach(reindeer => { %>
-                        <tr>
-                            <td><%= reindeer.id %></td>
-                            <td><%= reindeer.name %></td>
-                            <td><%= reindeer.age %></td>
-                            <td><%= reindeer.owner %></td>
-                            <td><%= reindeer.location %></td>
-                        </tr>
-                    <% }); %>
-                <% } else { %>
-                    <tr>
-                        <td colspan="5">Ingen reinsdyr funnet i databasen.</td>
-                    </tr>
-                <% } %>
+            <tbody id="database-table-body">
+                <!-- JS vil fylle ut data her -->
             </tbody>
         </table>
-    </section>
+    </main>
 
-    <footer>
-        <p>© 2025 Kukkik Ano - Samisk Reinsdyrregistrering</p>
-    </footer>
-
-
+ <!-- Legger til frontend-JS -->
 </body>
 </html>

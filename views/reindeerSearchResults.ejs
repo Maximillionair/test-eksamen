@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Søk etter reinsdyr</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/search.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Søk etter reinsdyr</h1>
+        <nav>
+            <a href="/">Hjem</a>
+            <a href="/reindeer/add">Legg til reinsdyr</a>
+            <a href="/database">Se database</a>
+        </nav>
+    </header>
+
+    <main>
+        <form id="search-form">
+            <input type="text" id="search-query" placeholder="Skriv inn navn eller ID..." required>
+            <button type="submit">Søk</button>
+        </form>
+
+        <div id="search-results">
+            <p>Skriv inn et søkeord og trykk på "Søk" for å finne reinsdyr.</p>
+        </div>
+    </main>
+
+
+</body>
+</html>
