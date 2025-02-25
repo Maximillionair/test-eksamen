@@ -7,7 +7,7 @@ const OwnerSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true, match: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/ },
   password: { type: String, required: true, minlength: 6 },
   language: String,
-  phone: String,
+  phonenumber: String,
 });
 
 
