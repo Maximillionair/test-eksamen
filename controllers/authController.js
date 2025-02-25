@@ -5,11 +5,15 @@ const jwt = require("jsonwebtoken");
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email is already taken" });
+    }
     const user = new User({ name, email, password });
     await user.save();
     res.redirect("/login");
   } catch (error) {
-    res.status(500).json({ message: "Registrering feilet" });
+    res.status(500).json({ message: "Registrering feilet: " + error.message });
   }
 };
 

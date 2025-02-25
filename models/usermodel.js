@@ -3,11 +3,12 @@ const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema({
   name: String,
-  email: { type: String, unique: true, required: true },
-  password: String,
+  email: { type: String, unique: true, required: true, match: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/ },
+  password: { type: String, required: true, minlength: 6 },
   language: String,
   phone: String,
 });
+
 
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();

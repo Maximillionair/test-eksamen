@@ -1,6 +1,12 @@
 const Flock = require("../models/flockModel");
 
 exports.getFlocks = async (req, res) => {
-  const flocks = await Flock.find().populate("owner", "name");
-  res.render("flock", { flocks });
+  try {
+    const flocks = await Flock.find().populate("owner", "name");
+    res.render("flock", { flocks });
+  } catch (error) {
+    console.error("Error fetching flocks:", error);
+    res.status(500).json({ message: "Failed to load flocks" });
+  }
 };
+

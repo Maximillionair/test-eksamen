@@ -5,20 +5,22 @@ const mongoose = require("mongoose");
 const searchReindeer = async (req, res) => {
   try {
     const query = req.query.query;
-    let searchConditions = [{ name: { $regex: query, $options: 'i' } }];
+    if (!query) {
+      return res.status(400).json({ success: false, message: "Query is required" });
+    }
 
+    let searchConditions = [{ name: { $regex: query, $options: 'i' } }];
     if (mongoose.Types.ObjectId.isValid(query)) {
       searchConditions.push({ _id: query });
     }
 
     const results = await Reindeer.find({ $or: searchConditions });
-
-    res.json({ success: true, data: results }); // Send JSON i riktig format
+    res.json({ success: true, data: results });
   } catch (error) {
     console.error("Error searching for reindeer:", error);
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
-};
+}
 
 // Funksjon for å legge til et nytt reinsdyr
 const addReindeer = async (req, res) => {
