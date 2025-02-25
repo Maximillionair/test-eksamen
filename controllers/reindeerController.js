@@ -1,4 +1,4 @@
-const Reindeer = require("../models/Reindeer");
+const Reindeer = require("../models/reindeerModel");
 const mongoose = require("mongoose");
 
 // Funksjon for å søke etter reinsdyr
