@@ -11,6 +11,7 @@ const userRoutes = require("./routes/userRoutes");
 const reindeerRoutes = require("./routes/reindeerRoutes");
 const flockRoutes = require("./routes/flockRoutes");
 const areaRoutes = require("./routes/areaRoutes");
+const authRoutes = require("/./routes/authRoutes");
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", 'ejs');
@@ -30,6 +31,7 @@ app.use("/users", userRoutes);
 app.use("/reindeer", reindeerRoutes);
 app.use("/flock", flockRoutes);
 app.use("/map", areaRoutes);
+app.use("/auth", authRoutes);
 
 // Start the server on port 3500
 const PORT = process.env.PORT || 3500;
