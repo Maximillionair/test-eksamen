@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const response = await fetch("/api/reindeer"); // Henter data fra backend
+        const response = await fetch("/reindeer/search"); // Henter data fra backend
         const data = await response.json();
 
         const tableBody = document.getElementById("database-table-body");
