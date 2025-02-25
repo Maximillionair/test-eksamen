@@ -11,7 +11,7 @@ const userRoutes = require("./routes/userRoutes");
 const reindeerRoutes = require("./routes/reindeerRoutes");
 const flockRoutes = require("./routes/flockRoutes");
 const areaRoutes = require("./routes/areaRoutes");
-const authRoutes = require("/./routes/authRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", 'ejs');
