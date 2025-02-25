@@ -1,37 +1,25 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const searchForm = document.getElementById("search-form");
-    const searchQuery = document.getElementById("search-query");
-    const searchResults = document.getElementById("search-results");
+document.getElementById("searchForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const query = document.getElementById("searchInput").value;
 
-    searchForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const query = searchQuery.value.trim();
-        if (!query) return;
+    try {
+        const response = await fetch(`/reindeer/search?query=${query}`);
+        const data = await response.json();
 
-        try {
-            const response = await fetch(`/reindeer/search?query=${encodeURIComponent(query)}`);
-            const data = await response.json(); // Forventer JSON-respons
+        const resultsContainer = document.getElementById("search-results");
+        resultsContainer.innerHTML = ""; // Tøm gamle resultater
 
-            // Tøm tidligere resultater
-            searchResults.innerHTML = "";
-
-            if (data.length === 0) {
-                searchResults.innerHTML = "<p>Ingen reinsdyr funnet.</p>";
-                return;
-            }
-
-            // Lag en liste med resultater
-            const list = document.createElement("ul");
-            data.forEach(reindeer => {
-                const listItem = document.createElement("li");
-                listItem.textContent = `${reindeer.name} (ID: ${reindeer._id})`;
-                list.appendChild(listItem);
-            });
-
-            searchResults.appendChild(list);
-        } catch (error) {
-            console.error("Feil ved søk:", error);
-            searchResults.innerHTML = "<p>En feil oppstod under søket.</p>";
+        if (!data.success || data.data.length === 0) {
+            resultsContainer.innerHTML = "<p>Ingen reinsdyr funnet</p>";
+            return;
         }
-    });
+
+        data.data.forEach(reindeer => {
+            const div = document.createElement("div");
+            div.innerHTML = `<strong>${reindeer.name}</strong> - Flokk: ${reindeer.flock}`;
+            resultsContainer.appendChild(div);
+        });
+    } catch (error) {
+        console.error("Feil ved henting av reinsdyr:", error);
+    }
 });
