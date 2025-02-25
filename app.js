@@ -7,7 +7,7 @@ const app = express();
 const {connectDB} = require("./handlers/dbhandler.js");
 
 const indexRoutes = require("./routes/indexRoutes");
-const userRoutes = require("./routes/userRoutes");
+const ownerRoutes = require("./routes/ownerRoutes");
 const reindeerRoutes = require("./routes/reindeerRoutes");
 const flockRoutes = require("./routes/flockRoutes");
 const areaRoutes = require("./routes/areaRoutes");
@@ -27,7 +27,7 @@ app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUniniti
 
 // using the individual routers
 app.use("/", indexRoutes);
-app.use("/users", userRoutes);
+app.use("/owners", ownerRoutes);
 app.use("/reindeer", reindeerRoutes);
 app.use("/flock", flockRoutes);
 app.use("/map", areaRoutes);
