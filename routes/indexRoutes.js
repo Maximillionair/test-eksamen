@@ -22,4 +22,8 @@ router.get("/map", (req, res) => {
   res.render("map");
 });
 
+router.get("/database", (req, res) => {
+  res.render("database");
+});
+
 module.exports = router;
