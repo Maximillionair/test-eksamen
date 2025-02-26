@@ -14,23 +14,26 @@
 
     <section class="form-container">
         <form action="/flock/add" method="POST">
-            <label for="name">Flokkens navn</label>
+            <label for="name">Flock Name</label>
             <input type="text" name="name" id="name" required>
-
-            <label for="owner">Eier (Owner ID)</label>
-            <input type="text" name="owner" id="owner" required>
-
-            <label for="series">Serie</label>
+          
+            <label for="ownerName">Owner's Name</label>
+            <input type="text" name="ownerName" id="ownerName" required>
+          
+            <label for="ownerEmail">Owner's Email</label>
+            <input type="email" name="ownerEmail" id="ownerEmail" required>
+          
+            <label for="series">Series</label>
             <input type="text" name="series" id="series">
-
-            <label for="buemerkeName">Buemerke Navn</label>
+          
+            <label for="buemerkeName">Bueearek Name</label>
             <input type="text" name="buemerkeName" id="buemerkeName">
-
-            <label for="buemerkeImage">Buemerke Bilde URL</label>
+          
+            <label for="buemerkeImage">Buemerke Image URL</label>
             <input type="text" name="buemerkeImage" id="buemerkeImage">
-
-            <button type="submit">Legg til Flokk</button>
-        </form>
+          
+            <button type="submit">Add Flock</button>
+          </form>
     </section>
 
     <footer>
