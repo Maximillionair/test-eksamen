@@ -26,8 +26,5 @@ router.get("/database", (req, res) => {
   res.render("database");
 });
 
-// router.get("/addReindeer", (req, res) => {
-//   res.render("addReindeer");
-// });
 
 module.exports = router;
