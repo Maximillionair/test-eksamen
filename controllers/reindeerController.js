@@ -25,14 +25,14 @@ const searchReindeer = async (req, res) => {
 // Funksjon for å legge til et nytt reinsdyr
 const addReindeer = async (req, res) => {
   try {
-    const {id, name, age, owner } = req.body;
+    const {serialNumber, name, age, owner } = req.body;
 
-    if (!id || !name || !age || !owner) {
+    if (!serialNumber || !name || !age || !owner) {
       return res.status(400).json({ success: false, message: "Alle feltene må fylles ut!" });
     }
 
     const newReindeer = new Reindeer({
-      id,
+      serialNumber,
       name,
       flock,
       age,
