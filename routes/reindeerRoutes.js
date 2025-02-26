@@ -15,7 +15,7 @@ router.get("/addReindeer", (req, res) => {
 
 // POST-rute for å legge til reinsdyr (kun for autoriserte brukere)
 router.post("/add", authMiddleware, (req, res, next) => {
-    if (!req.user) {
+    if (!req.owner) {
       return res.status(403).json({ message: "Unauthorized: You must be logged in to add reindeer" });
     }
     next();
