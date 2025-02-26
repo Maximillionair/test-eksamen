@@ -6,9 +6,9 @@ const path = require("path");
 const app = express();
 const {connectDB} = require("./handlers/dbhandler.js");
 
+const reindeerRoutes = require("./routes/reindeerRoutes");
 const indexRoutes = require("./routes/indexRoutes");
 const ownerRoutes = require("./routes/ownerRoutes");
-const reindeerRoutes = require("./routes/reindeerRoutes");
 const flockRoutes = require("./routes/flockRoutes");
 const areaRoutes = require("./routes/areaRoutes");
 const authRoutes = require("./routes/authRoutes");
