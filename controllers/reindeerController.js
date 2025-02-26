@@ -25,18 +25,34 @@ const searchReindeer = async (req, res) => {
 // Funksjon for å legge til et nytt reinsdyr
 const addReindeer = async (req, res) => {
   try {
-    const {serialNumber, name, age, owner } = req.body;
+    const { serialNumber, name, age, owner } = req.body;
 
+    // Validate required fields
     if (!serialNumber || !name || !age || !owner) {
       return res.status(400).json({ success: false, message: "Alle feltene må fylles ut!" });
     }
 
+    // Convert owner to ObjectId if valid
+    const ownerId = mongoose.Types.ObjectId.isValid(owner) ? new mongoose.Types.ObjectId(owner) : null;
+    if (!ownerId) {
+      return res.status(400).json({ success: false, message: "Ugyldig eier-ID!" });
+    }
+
+    // Find the owner to get their flock
+    const ownerData = await Owner.findById(ownerId);
+    if (!ownerData) {
+      return res.status(404).json({ success: false, message: "Eier ikke funnet!" });
+    }
+
+    const flockId = ownerData.flock; // Assuming Owner model has a "flock" field
+
+    // Create new reindeer with the flock ID from owner
     const newReindeer = new Reindeer({
       serialNumber,
       name,
-      flock,
+      flock: flockId, // Automatically assigned from owner
       age,
-      owner: req.owner ? req.owner.id : null,
+      owner: ownerId,
     });
 
     await newReindeer.save();

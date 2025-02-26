@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legg til Flokk</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="../app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Legg til en Ny Flokk</h1>
+    </header>
+
+    <section class="form-container">
+        <form action="/flock/add" method="POST">
+            <label for="name">Flokkens navn</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="owner">Eier (Owner ID)</label>
+            <input type="text" name="owner" id="owner" required>
+
+            <label for="series">Serie</label>
+            <input type="text" name="series" id="series">
+
+            <label for="buemerkeName">Buemerke Navn</label>
+            <input type="text" name="buemerkeName" id="buemerkeName">
+
+            <label for="buemerkeImage">Buemerke Bilde URL</label>
+            <input type="text" name="buemerkeImage" id="buemerkeImage">
+
+            <button type="submit">Legg til Flokk</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Kukkik Ano - Samisk Reinsdyrregistrering</p>
+    </footer>
+</body>
+</html>
