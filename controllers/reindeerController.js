@@ -52,8 +52,8 @@ const addReindeer = async (req, res) => {
     });
 
     await newReindeer.save();
-    res.redirect("/database");
     alert("Reinsdyr registrert: ",newReindeer);
+    res.redirect("/database");
   } catch (error) {
     console.error("Error adding reindeer:", error);
     res.status(500).json({ success: false, message: "Internal Server Error" });
