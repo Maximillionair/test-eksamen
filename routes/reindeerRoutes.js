@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/search", searchReindeer);
 
 router.get("/addReindeer", (req, res) => {
-    res.render("/addReindeer");
+    res.render("addReindeer");
 })
 
 // router.get("/add", addReindeer)
