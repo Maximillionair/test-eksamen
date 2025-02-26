@@ -5,7 +5,7 @@ const FlockSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "Owner", required: true },
   series: String,
   buemerkeName: String,
-  buemerkeImage: String,
+  buemerkeImage: Image,
 });
 
 module.exports = mongoose.model("Flock", FlockSchema);
