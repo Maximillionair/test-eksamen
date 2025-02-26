@@ -1,5 +1,6 @@
 const express = require("express");
 const { addFlock, getFlocks } = require("../controllers/flockController");
+const { authMiddleware } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
