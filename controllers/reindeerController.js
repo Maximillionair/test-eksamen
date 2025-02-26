@@ -52,6 +52,7 @@ const addReindeer = async (req, res) => {
     });
 
     await newReindeer.save();
+    res.redirect("/database");
     res.json({ success: true, message: "Reinsdyr lagt til!", data: newReindeer });
   } catch (error) {
     console.error("Error adding reindeer:", error);
