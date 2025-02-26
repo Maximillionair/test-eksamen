@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             row.innerHTML = `
                 <td>${reindeer.name}</td>
                 <td>${reindeer.flock}</td>
-                <td>${reindeer.birthDate}</td>
+                <td>${reindeer.age}</td>
             `;
             tableBody.appendChild(row);
         });

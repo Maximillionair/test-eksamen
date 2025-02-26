@@ -7,7 +7,7 @@ const router = express.Router();
 // GET-rute for å søke etter reinsdyr
 router.get("/search", searchReindeer);
 
-router.get("/add", addReindeer)
+// router.get("/add", addReindeer)
 
 // POST-rute for å legge til reinsdyr (kun for autoriserte brukere)
 router.post("/add", authMiddleware, (req, res, next) => {
