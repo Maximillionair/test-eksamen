@@ -1,4 +1,5 @@
 const Reindeer = require("../models/reindeerModel");
+const Owner = require("../models/ownermodel");
 const mongoose = require("mongoose");
 
 // Funksjon for å søke etter reinsdyr
@@ -25,34 +26,29 @@ const searchReindeer = async (req, res) => {
 // Funksjon for å legge til et nytt reinsdyr
 const addReindeer = async (req, res) => {
   try {
-    const { serialNumber, name, age, owner } = req.body;
+    const { serialNumber, name, age, ownerName, ownerEmail } = req.body;
 
     // Validate required fields
-    if (!serialNumber || !name || !age || !owner) {
+    if (!serialNumber || !name || !age || !ownerName || !ownerEmail) {
       return res.status(400).json({ success: false, message: "Alle feltene må fylles ut!" });
     }
 
-    // Convert owner to ObjectId if valid
-    const ownerId = mongoose.Types.ObjectId.isValid(owner) ? new mongoose.Types.ObjectId(owner) : null;
-    if (!ownerId) {
-      return res.status(400).json({ success: false, message: "Ugyldig eier-ID!" });
-    }
-
-    // Find the owner to get their flock
-    const ownerData = await Owner.findById(ownerId);
+    // Find the owner by name and email
+    const ownerData = await Owner.findOne({ name: ownerName, email: ownerEmail });
     if (!ownerData) {
       return res.status(404).json({ success: false, message: "Eier ikke funnet!" });
     }
 
-    const flockId = ownerData.flock; // Assuming Owner model has a "flock" field
+    // Retrieve flock associated with the owner
+    const flockId = ownerData.flock;
 
-    // Create new reindeer with the flock ID from owner
+    // Create new reindeer
     const newReindeer = new Reindeer({
       serialNumber,
       name,
-      flock: flockId, // Automatically assigned from owner
+      flock: flockId,
       age,
-      owner: ownerId,
+      owner: ownerName, // Store the owner's name instead of ObjectId
     });
 
     await newReindeer.save();
@@ -64,5 +60,6 @@ const addReindeer = async (req, res) => {
 };
 
 module.exports = { searchReindeer, addReindeer };
+
 
 
