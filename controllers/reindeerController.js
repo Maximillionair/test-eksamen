@@ -3,25 +3,37 @@ const Owner = require("../models/ownermodel");
 const mongoose = require("mongoose");
 
 // Funksjon for å søke etter reinsdyr
-const searchReindeer = async (req, res) => {
+// const searchReindeer = async (req, res) => {
+//   try {
+//     const query = req.query.query;
+//     if (!query) {
+//       return res.status(400).json({ success: false, message: "Query is required" });
+//     }
+
+//     let searchConditions = [{ name: { $regex: query, $options: 'i' } }];
+//     if (mongoose.Types.ObjectId.isValid(query)) {
+//       searchConditions.push({ _id: query });
+//     }
+
+//     const results = await Reindeer.find({ $or: searchConditions });
+//     res.json({ success: true, data: results });
+//   } catch (error) {
+//     console.error("Error searching for reindeer:", error);
+//     res.status(500).json({ success: false, message: "Internal Server Error" });
+//   }
+// }
+const getReindeer = async (req, res) => {
   try {
-    const query = req.query.query;
-    if (!query) {
-      return res.status(400).json({ success: false, message: "Query is required" });
-    }
-
-    let searchConditions = [{ name: { $regex: query, $options: 'i' } }];
-    if (mongoose.Types.ObjectId.isValid(query)) {
-      searchConditions.push({ _id: query });
-    }
-
-    const results = await Reindeer.find({ $or: searchConditions });
-    res.json({ success: true, data: results });
+    const reindeerList = await Reindeer.find().populate("flock", "name");
+    res.json({ success: true, data: reindeerList });
   } catch (error) {
-    console.error("Error searching for reindeer:", error);
+    console.error("Error fetching reindeer:", error);
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
-}
+};
+
+module.exports = { getReindeer };
+
 
 // Funksjon for å legge til et nytt reinsdyr
 const addReindeer = async (req, res) => {
@@ -60,7 +72,7 @@ const addReindeer = async (req, res) => {
   }
 };
 
-module.exports = { searchReindeer, addReindeer };
+module.exports = { searchReindeer, addReindeer, getReindeer };
 
 
 
